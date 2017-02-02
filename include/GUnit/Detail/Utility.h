@@ -152,6 +152,7 @@ inline auto symbols(const std::string &symbol) {
   auto fp = popen(cmd.str().c_str(), "r");
   if (fp) {
     char buf[8192] = {};
+    std::cout << buf << std::endl;
     while (fgets(buf, sizeof(buf), fp)) {
       if (!strncmp(buf, symbol.c_str(), symbol.length())) {
         auto i = symbol.length() + 1;
