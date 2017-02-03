@@ -152,9 +152,9 @@ inline auto symbols(const std::string &symbol) {
   cmd << "nm -gpP " << progname();
   auto fp = popen(cmd.str().c_str(), "r");
   if (fp) {
-    char buf[8192] = {};
-    std::cout << buf << std::endl;
+    char buf[8192] = {};    
     while (fgets(buf, sizeof(buf), fp)) {
+      std::cout << buf << std::endl;
       if (!strncmp(buf, symbol.c_str(), symbol.length())) {
         auto i = symbol.length() + 1;
         while (buf[i] != ' ' && buf[i]) ++i;
