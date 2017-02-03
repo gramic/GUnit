@@ -16,6 +16,7 @@
 #include <memory>
 #include <set>
 #include <sstream>
+#include <iostream>
 
 #if defined(__APPLE__)
 #include <libproc.h>
