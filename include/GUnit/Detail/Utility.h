@@ -154,7 +154,7 @@ inline auto symbols(const std::string &symbol) {
   if (fp) {
     char buf[8192] = {};    
     while (fgets(buf, sizeof(buf), fp)) {
-      std::cout << buf << std::endl;
+      std::cout << "|"<<buf<< "|=|"<< symbol << "|"<<std::endl;
       if (!strncmp(buf, symbol.c_str(), symbol.length()) || !strncmp(&buf[1], symbol.c_str(), symbol.length())) {
         auto i = symbol.length() + 1;
         while (buf[i] != ' ' && buf[i]) ++i;
