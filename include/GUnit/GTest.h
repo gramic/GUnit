@@ -186,7 +186,8 @@ class GTest<T, std::true_type, std::true_type> : public T {};
 
 template <class T, class Name, class File, int Line, class Should>
 bool SHOULD_REGISTER_GTEST() {
-  static auto shouldRegister = true;
+  static auto shouldRegister = false;
+  shouldRegister = true;
   return shouldRegister;
 }
 }  // detail
