@@ -10,6 +10,7 @@
 #include <gtest/gtest.h>
 #include <memory>
 #include <string>
+#include <typeinfo>
 #include "GUnit/Detail/Preprocessor.h"
 #include "GUnit/Detail/TypeTraits.h"
 #include "GUnit/GMake.h"
@@ -186,8 +187,14 @@ class GTest<T, std::true_type, std::true_type> : public T {};
 
 template <class T, class Name, class File, int Line, class Should>
 bool SHOULD_REGISTER_GTEST() {
-  static auto shouldRegister = false;
-  shouldRegister = true;
+  struct v {
+    virtual ~v() = default;
+    operator bool() {
+      return true;
+    }
+  };
+  static v shouldRegister;
+  (void)typeid(v).name();
   return shouldRegister;
 }
 }  // detail
